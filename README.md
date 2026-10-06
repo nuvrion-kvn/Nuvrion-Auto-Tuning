@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/nuvrion-banner.svg" alt="Nuvrion Scripts" width="100%">
+<img src="assets/nuvrion-banner.png" alt="Nuvrion Auto Tuning" width="100%">
 
 # Nuvrion Auto Tuning
 
