@@ -6,7 +6,6 @@
 
 ### Настройка сети, памяти и защиты Linux-сервера
 
-![Version](https://img.shields.io/badge/version-1.0.0-8b5cf6?style=for-the-badge)
 [![Validation](https://img.shields.io/github/actions/workflow/status/nuvrion-kvn/Nuvrion-Auto-Tuning/validate.yml?branch=main&style=for-the-badge&label=проверка)](https://github.com/nuvrion-kvn/Nuvrion-Auto-Tuning/actions/workflows/validate.yml)
 [![License](https://img.shields.io/badge/license-MIT-22c55e?style=for-the-badge)](LICENSE)
 [![Ubuntu](https://img.shields.io/badge/Ubuntu-24.04-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)](#-совместимость)
@@ -18,7 +17,7 @@
 
 ## Назначение
 
-**Nuvrion Auto Tuning 1.0.0** подготавливает Linux-сервер к работе с Xray и Remnawave: оценивает CPU, память и состояние системы, рассчитывает сетевые параметры и проверяет результат после применения.
+**Nuvrion Auto Tuning** подготавливает Linux-сервер к работе с Xray и Remnawave: оценивает CPU, память и состояние системы, рассчитывает сетевые параметры и проверяет результат после применения.
 
 Один запуск объединяет настройку BBR, conntrack и ZRAM, проверку лимитов ноды, аудит SSH и firewall, обслуживание диска и сертификатов. Перед изменениями скрипт показывает план, запрашивает согласие и сохраняет снимки настроек. Повторный запуск выполняет диагностику и необходимые исправления.
 
