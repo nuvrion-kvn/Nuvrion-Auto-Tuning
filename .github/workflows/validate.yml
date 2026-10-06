@@ -39,12 +39,20 @@ jobs:
       - name: Публикация новой версии
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
         run: |
           set -euo pipefail
           version=$(tr -d '\r\n' < VERSION)
           [[ "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]
           sha256sum -c SHA256SUMS
-          if gh release view "v$version" >/dev/null 2>&1; then exit 0; fi
+          if gh release view "v$version" >/dev/null 2>&1; then
+            if [[ "$COMMIT_MESSAGE" != *"[обновить-выпуск]"* ]]; then exit 0; fi
+            git tag -f "v$version" "$GITHUB_SHA"
+            git push --force origin "refs/tags/v$version"
+            gh release edit "v$version" --title "Nuvrion Auto Tuning $version" --notes-file RELEASE_NOTES.md
+            gh release upload "v$version" --clobber nuvrion-auto-tuning.sh SHA256SUMS
+            exit 0
+          fi
           gh release create "v$version" --target "$GITHUB_SHA" \
             --title "Nuvrion Auto Tuning $version" --notes-file RELEASE_NOTES.md \
             nuvrion-auto-tuning.sh SHA256SUMS
